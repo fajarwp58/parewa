@@ -16,6 +16,13 @@
                         <span>  Dashboard  </span>
                     </a>
                 </li>
+
+                <li>
+                    <a href="{{ url('supplier/index') }}" class="waves-effect">
+                        <i class="ion ion-ios-cart"></i>
+                        <span> Kelola Data Supplier </span>
+                    </a>
+                </li>
                  <li>
                     <a href="javascript: void(0);" class="waves-effect">
                         <i class="ion ion-ios-hourglass"></i>
@@ -24,14 +31,14 @@
                 </li>
 
                 <li>
-                    <a href="javascript: void(0);" class="waves-effect">
+                    <a href="{{ route('pembelian.index') }}" class="waves-effect">
                         <i class="ion-md-basket"></i>
                         <span> Pembelian </span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="javascript: void(0);" class="waves-effect">
+                    <a href="{{ url('stock/index') }}" class="waves-effect">
                         <i class="ion-ios-apps"></i>
                         <span> Stock </span>
                     </a>

@@ -12,6 +12,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
         <!-- Plugins css-->
         <link href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
@@ -98,6 +99,9 @@
 
         <!-- App js -->
         <script src="{{ asset('assets/js/app.min.js') }}"></script>
+        <script src="{{ asset('assets/datepicker/bootstrap-datepicker.js') }}"></script>
+        <script src="https://momentjs.com/downloads/moment.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
         @yield('js')
 

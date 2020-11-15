@@ -37,11 +37,11 @@ class UserController extends Controller
     }
 
     public function create(Request $request){
-        $valid = User::where('username',$request->username)->count();      //unttuk mencek data telah ada
+        $valid = User::where('username',$request->username)->count();      
 
         if($valid != 0){
-             $message = ['error' => 'Data Telah ada,Gagal menambahkan!'];  //unttuk mencek data telah ada
-             return response()->json($message);                             //unttuk mencek data  telah ada
+             $message = ['error' => 'Data Telah ada,Gagal menambahkan!'];  
+             return response()->json($message);                             
         } 
 
         else{
