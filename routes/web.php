@@ -59,7 +59,7 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['manager']], functi
 
     Route::group(['prefix' => 'pembelian'], function () {
         Route::get('/', 'PembelianController@index')->name('pembelian.index');
-        Route::get('/detail', 'PembelianController@index2')->name('pembelian_detail.index');
+        Route::get('/detail', 'PembelianController@detail')->name('pembelian_detail.index');
         Route::get('/data', 'PembelianController@listData')->name('pembelian.data');
         Route::get('/data2', 'PembelianController@listData2')->name('pembelian_detail.data');
         Route::get('/{id}/tambah', 'PembelianController@create');
@@ -69,7 +69,6 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['manager']], functi
         Route::get('/pembelian_detail/loadform/{diskon}/{total}', 'PembelianController@loadForm');
         Route::get('/delete/{id}', 'PembelianController@delete');
         Route::get('/update/{id}', 'PembelianController@update');
-        Route::get('/delete/{id}', 'PembelianController@delete');
         Route::get('/delete2/{id}', 'PembelianController@delete2');
         //Route::resource('/', 'PembelianController');  
     });

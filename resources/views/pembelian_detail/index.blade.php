@@ -16,7 +16,7 @@
 
 <form class="form form-horizontal form-produk" method="post">
 {{ csrf_field() }}
-  <input type="hidden" name="nopembelian" value="{{ $pembelian->no_pembelian }}">
+  <input type="hidden" name="nopembelian" value="{{ $supplier->no_pembelian }}">
   <div class="form-group">
       <label for="kode" class="col-md-2 control-label">Kode Produk</label>
       <div class="col-md-5">
@@ -55,7 +55,7 @@
   <div class="col-md-4">
     <form class="form form-horizontal form-pembelian" method="post" action="{{  route('pembelian.store') }} ">
       {{ csrf_field() }}
-      <input type="hidden" name="nopembelian" value="{{ $pembelian->no_pembelian }}">
+      <input type="hidden" name="nopembelian" value="{{ $supplier->no_pembelian }}">
       <input type="hidden" name="totalbayar" id="totalbayar">
       <input type="hidden" name="totalitem" id="totalitem">
       <input type="hidden" name="bayar" id="bayar">
@@ -108,7 +108,7 @@ $(function(){
      "bSort" : false,
      "processing" : true,
      "ajax" : {
-       "url" : "{{ route('pembelian_detail.data', $pembelian->id_pembelian) }}",
+       "url" : "{{ route('pembelian_detail.data', $supplier->no_pembelian) }}",
        "type" : "GET"
      }
   }).on('draw.dt', function(){
@@ -198,24 +198,6 @@ function changeCount(id){
 function showProduct(){
   $('#modal-produk').modal('show');
 }
-
-// function deleteItem(id){
-//    if(confirm("Apakah yakin data akan dihapus?")){
-//      $.ajax({
-//        url : "pembelian_detail/"+id,
-//        type : "POST",
-//        data : {'_method' : 'DELETE', '_token' : $('meta[name=csrf-token]').attr('content')},
-//        success : function(data){
-//          table.ajax.reload(function(){
-//             loadForm($('#diskon').val());
-//           }); 
-//        },
-//        error : function(){
-//          alert("Tidak dapat menghapus data!");
-//        }
-//      });
-//    }
-// }
 
 function loadForm(diskon=0){
   $('#total').val($('.total').text());

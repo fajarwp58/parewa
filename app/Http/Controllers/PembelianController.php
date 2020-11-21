@@ -18,11 +18,11 @@ class PembelianController extends Controller
         return view('pembelian.index',compact('supplier'));
     }
 
-    public function index2(){
-      $supplier = Pembelian::leftJoin('supplier', 'supplier.kode_supplier', '=', 'pembelian.kode_supplier')->first();
-      $pembelian = Pembelian::all()->first();
+    public function detail(){
+      $supplier = Pembelian::leftJoin('supplier', 'supplier.kode_supplier', '=', 'pembelian.kode_supplier')
+      ->orderBY('no_pembelian', 'DESC')->first();
       $produk = Barang::all();
-      return view('pembelian_detail.index',compact('supplier','pembelian','produk'));
+      return view('pembelian_detail.index',compact('supplier','produk'));
   }
 
     public function listData(){
@@ -52,7 +52,8 @@ class PembelianController extends Controller
    }
 
    public function listData2(){
-     $supplier = Pembelian::leftJoin('supplier', 'supplier.kode_supplier', '=', 'pembelian.kode_supplier')->first();
+     $supplier = Pembelian::leftJoin('supplier', 'supplier.kode_supplier', '=', 'pembelian.kode_supplier')
+     ->orderBY('no_pembelian', 'DESC')->first();
      $detail = DetailPembelian::leftJoin('barang', 'barang.kode_barang', '=', 'detail_pembelian.kode_barang')
         ->where('no_pembelian', '=', $supplier->no_pembelian)
         ->get();
@@ -117,9 +118,6 @@ class PembelianController extends Controller
       $pembelian->diskon = 0;     
       $pembelian->bayar = 0;     
       $pembelian->save();
-
-      session(['nopembelian' => $pembelian->no_pembelian]);
-      session(['kodesupplier' => $id]);
 
       return Redirect::route('pembelian_detail.index');      
    }

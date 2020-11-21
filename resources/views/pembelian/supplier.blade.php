@@ -25,7 +25,7 @@
             <th>{{ $data->nama_supplier }}</th>
             <th>{{ $data->alamat }}</th>
             <th>{{ $data->no_hp }}</th>
-            <th><a href="pembelian/{{ $data->kode_supplier }}/tambah" class="btn btn-primary"><i class="fa fa-check-circle"></i> Pilih</a></th>
+            <th><a href="/pembelian/{{ $data->kode_supplier }}/tambah" class="btn btn-primary"><i class="fa fa-check-circle"></i> Pilih</a></th>
           </tr>
          @endforeach
       </tbody>
