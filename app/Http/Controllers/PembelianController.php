@@ -42,7 +42,7 @@ class PembelianController extends Controller
        $row[] = "Rp. ".format_uang($list->bayar);
        $row[] = '<div class="btn-group">
                <a onclick="showDetail('.$list->no_pembelian.')" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-               <a onclick="deleteData('.$list->no_pembelian.')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+               <a data-id="'.$list->no_pembelian.'" id="delete" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
               </div>';
        $data[] = $row;
      }
@@ -194,6 +194,13 @@ class PembelianController extends Controller
     {
 
       DetailPembelian::where('kode_barang', $id)->delete();
+
+    }
+
+    public function delete2($id)
+    {
+
+      Pembelian::where('no_pembelian', $id)->delete();
 
     }
 

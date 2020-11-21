@@ -69,7 +69,8 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['manager']], functi
         Route::get('/pembelian_detail/loadform/{diskon}/{total}', 'PembelianController@loadForm');
         Route::get('/delete/{id}', 'PembelianController@delete');
         Route::get('/update/{id}', 'PembelianController@update');
-        Route::get('/delete/{id}', 'PemebelianController@delete');
+        Route::get('/delete/{id}', 'PembelianController@delete');
+        Route::get('/delete2/{id}', 'PembelianController@delete2');
         //Route::resource('/', 'PembelianController');  
     });
     

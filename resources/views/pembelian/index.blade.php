@@ -58,6 +58,22 @@ $(function(){
     });
 
    $('.tabel-supplier').DataTable();
+
+   $(document).on('click', '#delete', function() {
+                var id = $(this).data('id');
+                if (confirm("Yakin ingin menghapus data?")){
+                    $.ajax({
+                        url : "{{ url('pembelian/delete2') }}/"+id,
+
+                        success :function () {
+
+                          table.ajax.reload();
+
+
+                        }
+                    })
+                }
+            });
 });
 
 function addForm(){
@@ -71,20 +87,5 @@ function showDetail(id){
     table1.ajax.reload();
 }
 
-function deleteData(id){
-   if(confirm("Apakah yakin data akan dihapus?")){
-     $.ajax({
-       url : "pembelian/"+id,
-       type : "POST",
-       data : {'_method' : 'DELETE', '_token' : $('meta[name=csrf-token]').attr('content')},
-       success : function(data){
-         table.ajax.reload();
-       },
-       error : function(){
-         alert("Tidak dapat menghapus data!");
-       }
-     });
-   }
-}
 </script>
 @endsection

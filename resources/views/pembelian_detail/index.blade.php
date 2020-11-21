@@ -141,12 +141,11 @@ $(function(){
                 var id = $(this).data('id');
                 if (confirm("Yakin ingin menghapus data?")){
                     $.ajax({
-                        url : "{{ url('pemebelian/delete') }}/"+id,
+                        url : "{{ url('pembelian/delete') }}/"+id,
 
                         success :function () {
 
-                            $('.tabel-pembelian').DataTable().destroy();
-                            loadData();
+                          table.ajax.reload();
 
 
                         }
