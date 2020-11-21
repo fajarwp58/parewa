@@ -210,7 +210,7 @@ function loadForm(diskon=0){
        success : function(data){
          $('#totalrp').val("Rp. "+data.totalrp);
          $('#bayarrp').val("Rp. "+data.bayarrp);
-         $('#totalbayar').val(data.bayar);
+         $('#totalbayar').val(data.total);
          $('#bayar').val(data.bayar);
          $('#tampil-bayar').text("Rp. "+data.bayarrp);
          $('#tampil-terbilang').text(data.terbilang);

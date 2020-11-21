@@ -68,7 +68,7 @@ class PembelianController extends Controller
        $row[] = $list->kode_barang;
        $row[] = $list->nama_barang;
        $row[] = "Rp. ".format_uang($list->harga);
-       $row[] = "<input type='number' class='form-control' name='jumlah_$list->kode_barang' value='$list->jumlah' onChange='changeCount($list->kode_barang)'>";
+       $row[] = "<input type='number' class='form-control' name='jumlah_$list->id_detail_pembelian' value='$list->jumlah' onChange='changeCount($list->id_detail_pembelian)'>";
        $row[] = "Rp. ".format_uang($list->harga * $list->jumlah);
        $row[] = '<a data-id="'.$list->kode_barang.'" id="delete" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>';
        $data[] = $row;
@@ -172,6 +172,7 @@ class PembelianController extends Controller
     $bayar = $total - ($diskon / 100 * $total);
     $data = array(
        "totalrp" => format_uang($total),
+       "total" => $total,
        "bayar" => $bayar,
        "bayarrp" => format_uang($bayar),
        "terbilang" => ucwords(terbilang($bayar))." Rupiah"
@@ -182,9 +183,9 @@ class PembelianController extends Controller
   public function update(Request $request, $id)
    {
       $nama_input = "jumlah_".$id;
-      $detail = DetailPembelian::find($id);
+      $detail = DetailPembelian::where('id_detail_pembelian',$id)->orderBY('id_detail_pembelian', 'DESC')->first();
       $detail->jumlah = $request[$nama_input];
-      $detail->sub_total = $detail->harga_beli * $request[$nama_input];
+      $detail->sub_total = $detail->harga * $request[$nama_input];
       $detail->update();
    }
 
