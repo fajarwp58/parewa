@@ -24,7 +24,7 @@
                     </a>
                 </li>
                  <li>
-                    <a href="javascript: void(0);" class="waves-effect">
+                    <a href="{{ url('penjualan/index') }}" class="waves-effect">
                         <i class="ion ion-ios-hourglass"></i>
                         <span> Penjualan </span>
                     </a>
@@ -41,6 +41,20 @@
                     <a href="{{ url('stock/index') }}" class="waves-effect">
                         <i class="ion-ios-apps"></i>
                         <span> Stock </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url('kategori/index') }}" class="waves-effect">
+                        <i class="ion ion-md-filing"></i>
+                        <span> Kelola Kategori </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url('menu/index') }}" class="waves-effect">
+                        <i class="ion ion-ios-book"></i>
+                        <span> Kelola Menu </span>
                     </a>
                 </li>
                

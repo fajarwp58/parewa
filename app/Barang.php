@@ -18,4 +18,9 @@ class Barang extends Model
     {
         return $this->belongsToMany('App\Pembelian','detail_pembelian','kode_barang','no_pembelian');
     }
+
+    public function menu()
+    {
+        return $this->belongsToMany('App\Menu','resep','kode_barang','id_menu');
+    }
 }

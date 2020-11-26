@@ -72,5 +72,30 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['manager']], functi
         Route::get('/delete2/{id}', 'PembelianController@delete2');
         //Route::resource('/', 'PembelianController');  
     });
+
+    Route::group(['prefix' => 'kategori'], function () {
+        Route::get('/index', 'KategoriController@index');
+        Route::get('/data', 'KategoriController@data');
+        Route::post('/create', 'KategoriController@create');
+        Route::post('/edit/{id}', 'KategoriController@edit');
+        Route::get('/delete/{id}', 'KategoriController@delete');
+    });
+
+    Route::group(['prefix' => 'menu'], function () {
+        Route::get('/index', 'MenuController@index');
+        Route::get('/data', 'MenuController@data');
+        Route::post('/create', 'MenuController@create');
+        Route::post('/edit/{id}', 'MenuController@edit');
+        Route::get('/delete/{id}', 'MenuController@delete');
+        Route::get('/listkategori', 'MenuController@listkategori');
+        Route::get('/listbarang', 'MenuController@listbarang');
+        Route::get('/addresep/{id}', 'MenuController@addresep');
+        Route::post('/resep/create', 'MenuController@resepcreate');
+    });
+
+    Route::group(['prefix' => 'penjualan'], function () {
+        Route::get('/index', 'PenjualanController@index');
+       
+    });
     
 });
