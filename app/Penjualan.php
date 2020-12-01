@@ -12,6 +12,8 @@ class Penjualan extends Model
         'tgl_penjualan' , 'total_bayar' , 'id_user'
     ];
 
+    protected $keyType = 'string';
+
     public $timestamps = false;
 
     public function user() {

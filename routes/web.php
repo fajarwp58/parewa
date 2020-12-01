@@ -95,7 +95,12 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['manager']], functi
 
     Route::group(['prefix' => 'penjualan'], function () {
         Route::get('/index', 'PenjualanController@index');
-       
+        Route::get('/data', 'PenjualanController@data');
+        Route::get('/data2', 'PenjualanController@listData2')->name('penjualan_detail.data');
+        Route::post('/store2', 'PenjualanController@store2')->name('penjualan_detail.store');
+        Route::get('/penjualan_detail/loadform/{total}', 'PenjualanController@loadForm');
+        Route::post('/store', 'PenjualanController@store')->name('penjualan.store');
+        Route::get('/delete/{id}', 'PenjualanController@delete');
     });
     
 });

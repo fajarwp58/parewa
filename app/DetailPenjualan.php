@@ -11,6 +11,8 @@ class DetailPenjualan extends Model
         'id_penjualan' , 'id_menu' , 'qty' , 'total'
     ];
 
+    public $timestamps = false;
+
     public function penjualan() {
         return $this->belongsTo('App\Penjualan', 'id_penjualan', 'id_penjualan');
     }
