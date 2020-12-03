@@ -150,8 +150,8 @@ $(function() {
                         { "data": "harga_jual" },
                         { data: 'id_detail_penjualan',
                           sClass: 'text-center',
-                          render: function(data) {
-                            return'<input style="width: 150px;" type="number" class="form-control" name="jumlah_$list->id_detail_penjualan" value="$list->qty" onChange="changeCount($list->id_detail_penjualan)">';
+                          render: function(data, type, row) {
+                            return'<input style="width: 150px;" type="number" class="form-control" name="jumlah_$list->id_detail_penjualan" value="'+row.qty+'" onChange="changeCount($list->id_detail_penjualan)">';
                           }        
                         },
                         { "data": "total" },

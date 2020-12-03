@@ -106,15 +106,16 @@ class PenjualanController extends Controller
       $penjualan->total_bayar = $request['totalrp'];
       $penjualan->update();
 
-      $detail = DetailPenjualan::where('id_penjualan', '=', $request['nopembelian'])->first();
+      $detail = DetailPenjualan::where('id_penjualan', '=', $request['nopembelian'])->get();
+      foreach($detail as $da){
       $detail2 = Menu::leftJoin('resep', 'resep.id_menu', '=', 'menu.id_menu')
-           ->where('menu.id_menu', '=', $detail->id_menu)
+           ->where('menu.id_menu', '=', $da->id_menu)
            ->get();
       foreach($detail2 as $data){
         $produk = Barang::where('kode_barang', '=', $data->kode_barang)->first();
         $produk->qty -= $data->jumlah;
         $produk->update();
-      }
+      }}
       return Redirect::route('pembelian.index');
    }
 
