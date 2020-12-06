@@ -15,6 +15,13 @@
             <form class="form form-horizontal form-produk" method="post">
             {{ csrf_field() }}
               <input type="hidden" name="nopembelian" value="{{ $data->id_penjualan }}">
+              <table width="400">
+                <tr>
+                  <td><label>Jumlah Pesanan</label></td>
+                  <td> <input style="width: 90px;" type="number" id="jumlah" name="jumlah" class="form-control" value="1"></td>
+                </tr>
+              </table>
+             
               <div class="form-group">
                 <!-- <label for="kode" class="col-md-2 control-label">Kode Produk</label> -->
                 <div class="col-md-5">
@@ -116,7 +123,11 @@
 <script type="text/javascript">
 var table;
 $(function() {
-  $('.tabel-produk').DataTable();
+  $('.tabel-produk').DataTable({
+    paging: false,
+                info: false,
+                searching : false,
+  });
 
   $('.form-produk').on('submit', function(e){
       return false;
@@ -148,12 +159,7 @@ $(function() {
                     "columns": [
                         { "data": "nama_menu" },
                         { "data": "harga_jual" },
-                        { data: 'id_detail_penjualan',
-                          sClass: 'text-center',
-                          render: function(data, type, row) {
-                            return'<input style="width: 150px;" type="number" class="form-control" name="jumlah_$list->id_detail_penjualan" value="'+row.qty+'" onChange="changeCount($list->id_detail_penjualan)">';
-                          }        
-                        },
+                        { "data": "qty"  },
                         { "data": "total" },
                         {
                             data: 'id_menu',

@@ -81,8 +81,8 @@ class PenjualanController extends Controller
       $detail = new DetailPenjualan;
       $detail->id_penjualan = $request['nopembelian'];
       $detail->id_menu = $request['kode'];
-      $detail->qty = 1;
-      $detail->total = $menu->harga_jual;
+      $detail->qty = $request['jumlah'];
+      $detail->total = $menu->harga_jual*$request['jumlah'];
       $detail->save();
    }
 
