@@ -102,6 +102,8 @@
         <script src="{{ asset('assets/datepicker/bootstrap-datepicker.js') }}"></script>
         <script src="https://momentjs.com/downloads/moment.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="{{ asset('assets/js/chartjs/Chart.min.js') }}"></script>
+        <script src="{{ asset('assets/js/chartjs/echarts.min.js') }}"></script>
 
         @yield('js')
 

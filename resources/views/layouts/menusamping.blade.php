@@ -31,6 +31,13 @@
                 </li>
 
                 <li>
+                    <a href="{{ url('transaksi/index') }}" class="waves-effect">
+                        <i class="ion ion-md-aperture"></i>
+                        <span>Transaksi Penjualan </span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="{{ route('pembelian.index') }}" class="waves-effect">
                         <i class="ion-md-basket"></i>
                         <span> Pembelian </span>

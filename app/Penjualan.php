@@ -26,6 +26,6 @@ class Penjualan extends Model
 
     public function menu()
     {
-        return $this->belongsToMany('App\Many','detail_penjualan','id_menu','id_penjualan');
+        return $this->belongsToMany('App\Menu','detail_penjualan','id_penjualan','id_menu');
     }
 }

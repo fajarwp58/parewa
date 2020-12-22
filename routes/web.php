@@ -102,5 +102,19 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['manager']], functi
         Route::post('/store', 'PenjualanController@store')->name('penjualan.store');
         Route::get('/delete/{id}', 'PenjualanController@delete');
     });
+
+    Route::group(['prefix' => 'transaksi'], function () {
+        Route::get('/index', 'TransaksiController@index')->name('transaksi');
+        // Route::get('download', 'TransaksilainnyaController@download')->name('downloadlaporan');
+        // Route::post('download', 'TransaksilainnyaController@refresh')->name('laporan.refresh');
+        // Route::get('download/laporan/data/{awal}/{akhir}', 'TransaksilainnyaController@listData')->name('laporan.data');
+        // Route::get('download/laporan/pdf/{awal}/{akhir}', 'TransaksilainnyaController@exportPDF');
+        Route::get('/data', 'TransaksiController@data');
+        // Route::get('dataHistory', 'TransaksilainnyaController@dataHistory');
+        // Route::get('create', 'TransaksilainnyaController@create');
+        // Route::post('update/{id}', 'TransaksilainnyaController@update');
+        // Route::get('delete/{id}', 'TransaksilainnyaController@delete');
+        // Route::get('cetak/{id}', 'TransaksilainnyaController@cetak');
+    });
     
 });

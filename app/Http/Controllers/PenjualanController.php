@@ -116,7 +116,8 @@ class PenjualanController extends Controller
         $produk->qty -= $data->jumlah;
         $produk->update();
       }}
-      return Redirect::route('pembelian.index');
+      
+      return redirect('transaksi/index')->with(['success' => 'Transaksi berhasil di simpan']);
    }
 
    public function delete($id)
