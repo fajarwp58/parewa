@@ -27,6 +27,22 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['manager','head bar
         Route::get('/', 'HomeController@index')->name('home');
     });
 
+    Route::group(['prefix' => 'penjualan'], function () {
+        Route::get('/index', 'PenjualanController@index');
+        Route::get('/data', 'PenjualanController@data');
+        Route::get('/data2', 'PenjualanController@listData2')->name('penjualan_detail.data');
+        Route::post('/store2', 'PenjualanController@store2')->name('penjualan_detail.store');
+        Route::get('/penjualan_detail/loadform/{total}', 'PenjualanController@loadForm');
+        Route::post('/store', 'PenjualanController@store')->name('penjualan.store');
+        Route::get('/delete/{id}', 'PenjualanController@delete');
+    });
+
+    Route::group(['prefix' => 'transaksi'], function () {
+        Route::get('/index', 'TransaksiController@index')->name('transaksi');
+        Route::get('/data', 'TransaksiController@data');
+        Route::get('cetak/{id}', 'TransaksiController@cetak');
+    });
+
 });
 
 Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['manager']], function () {
@@ -92,29 +108,53 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['manager']], functi
         Route::get('/addresep/{id}', 'MenuController@addresep');
         Route::post('/resep/create', 'MenuController@resepcreate');
     });
+    
+});
 
-    Route::group(['prefix' => 'penjualan'], function () {
-        Route::get('/index', 'PenjualanController@index');
-        Route::get('/data', 'PenjualanController@data');
-        Route::get('/data2', 'PenjualanController@listData2')->name('penjualan_detail.data');
-        Route::post('/store2', 'PenjualanController@store2')->name('penjualan_detail.store');
-        Route::get('/penjualan_detail/loadform/{total}', 'PenjualanController@loadForm');
-        Route::post('/store', 'PenjualanController@store')->name('penjualan.store');
-        Route::get('/delete/{id}', 'PenjualanController@delete');
+Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['head barista']], function () {
+
+    Route::group(['prefix' => 'stock'], function () {
+        Route::get('/index', 'StockController@index');
+        Route::get('/data', 'stockController@data');
+        Route::post('/create', 'stockController@create');
+        Route::post('/edit/{id}', 'stockController@edit');
+        Route::get('/delete/{id}', 'stockController@delete');
     });
 
-    Route::group(['prefix' => 'transaksi'], function () {
-        Route::get('/index', 'TransaksiController@index')->name('transaksi');
-        // Route::get('download', 'TransaksilainnyaController@download')->name('downloadlaporan');
-        // Route::post('download', 'TransaksilainnyaController@refresh')->name('laporan.refresh');
-        // Route::get('download/laporan/data/{awal}/{akhir}', 'TransaksilainnyaController@listData')->name('laporan.data');
-        // Route::get('download/laporan/pdf/{awal}/{akhir}', 'TransaksilainnyaController@exportPDF');
-        Route::get('/data', 'TransaksiController@data');
-        // Route::get('dataHistory', 'TransaksilainnyaController@dataHistory');
-        // Route::get('create', 'TransaksilainnyaController@create');
-        // Route::post('update/{id}', 'TransaksilainnyaController@update');
-        // Route::get('delete/{id}', 'TransaksilainnyaController@delete');
-        // Route::get('cetak/{id}', 'TransaksilainnyaController@cetak');
+    Route::group(['prefix' => 'pembelian'], function () {
+        Route::get('/', 'PembelianController@index')->name('pembelian.index');
+        Route::get('/detail', 'PembelianController@detail')->name('pembelian_detail.index');
+        Route::get('/data', 'PembelianController@listData')->name('pembelian.data');
+        Route::get('/data2', 'PembelianController@listData2')->name('pembelian_detail.data');
+        Route::get('/{id}/tambah', 'PembelianController@create');
+        Route::get('/{id}/lihat', 'PembelianController@show');
+        Route::post('/store', 'PembelianController@store')->name('pembelian.store');
+        Route::post('/store2', 'PembelianController@store2')->name('pembelian_detail.store');
+        Route::get('/pembelian_detail/loadform/{diskon}/{total}', 'PembelianController@loadForm');
+        Route::get('/delete/{id}', 'PembelianController@delete');
+        Route::get('/update/{id}', 'PembelianController@update');
+        Route::get('/delete2/{id}', 'PembelianController@delete2');
+        //Route::resource('/', 'PembelianController');  
+    });
+
+    Route::group(['prefix' => 'kategori'], function () {
+        Route::get('/index', 'KategoriController@index');
+        Route::get('/data', 'KategoriController@data');
+        Route::post('/create', 'KategoriController@create');
+        Route::post('/edit/{id}', 'KategoriController@edit');
+        Route::get('/delete/{id}', 'KategoriController@delete');
+    });
+
+    Route::group(['prefix' => 'menu'], function () {
+        Route::get('/index', 'MenuController@index');
+        Route::get('/data', 'MenuController@data');
+        Route::post('/create', 'MenuController@create');
+        Route::post('/edit/{id}', 'MenuController@edit');
+        Route::get('/delete/{id}', 'MenuController@delete');
+        Route::get('/listkategori', 'MenuController@listkategori');
+        Route::get('/listbarang', 'MenuController@listbarang');
+        Route::get('/addresep/{id}', 'MenuController@addresep');
+        Route::post('/resep/create', 'MenuController@resepcreate');
     });
     
 });

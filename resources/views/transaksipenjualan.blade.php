@@ -152,8 +152,8 @@
         });
 
         $(document).on('click', '#cetak', function() {
-            var data = $('#ttransaksilainnya').DataTable().row($(this).parents('tr')).data();
-            window.location.href = '{{ url('transaksilainnya/cetak') }}/'+data.transaksi_pemeriksaan_id ;
+            var data = $('#ttransaksi').DataTable().row($(this).parents('tr')).data();
+            window.location.href = '{{ url('transaksi/cetak') }}/'+data.id_penjualan ;
         });
 
         $(document).on('click', '#delete', function() {

@@ -151,7 +151,7 @@ $(function () {
     datasets: [
       {
         label: "Parewa",
-        fillColor: "rgba(60,141,188,0.9)",
+        fillColor: "grey",
         strokeColor: "rgb(210, 214, 222)",
         pointColor: "rgb(210, 214, 222)",
         pointStrokeColor: "#c1c7d1",
